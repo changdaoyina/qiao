@@ -1,4 +1,4 @@
-package com.qiao.service;
+package com.qiao.jdbc;
 
 public interface UserService {
 	/**
