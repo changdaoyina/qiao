@@ -1,4 +1,4 @@
-package com.qiao.repository;
+package com.qiao.repository.readonly;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.qiao.domain.User;
 
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface ReadonlyUserRepository extends JpaRepository<User, Long>{
 	
 	User findByName(String name);
 	

@@ -9,7 +9,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qiao.domain.User;
-import com.qiao.repository.UserRepository;
+import com.qiao.repository.readonly.ReadonlyUserRepository;
+import com.qiao.repository.tx.UserRepository;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,6 +19,13 @@ public class UserRepositoryTests {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ReadonlyUserRepository readonlyUserRepository;
+	
+	@Test
+	public void test2() throws Exception{
+		readonlyUserRepository.save(new User("AAA", 10));
+	}
 
 	@Test
 	public void test() throws Exception {
