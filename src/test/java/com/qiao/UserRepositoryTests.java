@@ -6,7 +6,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qiao.domain.User;
 import com.qiao.repository.readonly.ReadonlyUserRepository;
@@ -28,6 +30,9 @@ public class UserRepositoryTests {
 	}
 
 	@Test
+//	@Transactional(value="transactionManagerPrimary")
+	@Transactional(value="transactionManagerSecondary")
+	@Rollback
 	public void test() throws Exception {
 
 		// 创建10条记录
