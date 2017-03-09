@@ -1,9 +1,20 @@
 package com.qiao.domain.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
 	private Integer age;
+	
+	public User(String name, Integer age) {
+		this.name = name;
+		this.age = age;
+	}
 
 	public Long getId() {
 		return id;
