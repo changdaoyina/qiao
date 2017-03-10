@@ -4,33 +4,34 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiao.domain.models.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(Application.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class RedisTests {
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
-
-//	@Autowired
-//	private RedisTemplate<String, User> redisTemplate;
+	
+	@Autowired
+	private RedisTemplate<String, User> registTemplate;
 
 	@Test
 	public void test() throws Exception {
 
 		// 保存字符串
-		stringRedisTemplate.opsForValue().set("aaa", "111");
-		Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
+		stringRedisTemplate.opsForValue().set("蝙蝠侠", "111");
+		Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("蝙蝠侠"));
+		
 
-		// 保存对象
-//		User user = new User("超人", 20);
-//		redisTemplate.opsForValue().set(user.getName(), user);
+//		// 保存对象
+		User user = new User(0l,"aa", 20);
+		registTemplate.opsForValue().set(user.getName(), user);
 //
 //		user = new User("蝙蝠侠", 30);
 //		redisTemplate.opsForValue().set(user.getName(), user);
